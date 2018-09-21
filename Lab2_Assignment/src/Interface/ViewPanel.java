@@ -44,8 +44,8 @@ public class ViewPanel extends javax.swing.JPanel {
         descriptionTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        availNumTextField1 = new javax.swing.JTextField();
-        descriptionTextField1 = new javax.swing.JTextField();
+        SuppliernNameTF = new javax.swing.JTextField();
+        SuppkierAddressTF = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -115,23 +115,23 @@ public class ViewPanel extends javax.swing.JPanel {
         add(jLabel7);
         jLabel7.setBounds(30, 270, 130, 20);
 
-        availNumTextField1.setEditable(false);
-        availNumTextField1.addActionListener(new java.awt.event.ActionListener() {
+        SuppliernNameTF.setEditable(false);
+        SuppliernNameTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                availNumTextField1ActionPerformed(evt);
+                SuppliernNameTFActionPerformed(evt);
             }
         });
-        add(availNumTextField1);
-        availNumTextField1.setBounds(160, 220, 320, 30);
+        add(SuppliernNameTF);
+        SuppliernNameTF.setBounds(160, 220, 320, 30);
 
-        descriptionTextField1.setEditable(false);
-        descriptionTextField1.addActionListener(new java.awt.event.ActionListener() {
+        SuppkierAddressTF.setEditable(false);
+        SuppkierAddressTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descriptionTextField1ActionPerformed(evt);
+                SuppkierAddressTFActionPerformed(evt);
             }
         });
-        add(descriptionTextField1);
-        descriptionTextField1.setBounds(160, 260, 320, 30);
+        add(SuppkierAddressTF);
+        SuppkierAddressTF.setBounds(160, 260, 320, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
@@ -150,13 +150,13 @@ public class ViewPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_descriptionTextFieldActionPerformed
 
-    private void availNumTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availNumTextField1ActionPerformed
+    private void SuppliernNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuppliernNameTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_availNumTextField1ActionPerformed
+    }//GEN-LAST:event_SuppliernNameTFActionPerformed
 
-    private void descriptionTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionTextField1ActionPerformed
+    private void SuppkierAddressTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuppkierAddressTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_descriptionTextField1ActionPerformed
+    }//GEN-LAST:event_SuppkierAddressTFActionPerformed
     private void displayProduct(Product product){
               
        String productName = product.getName();
@@ -175,13 +175,21 @@ public class ViewPanel extends javax.swing.JPanel {
        descriptionTextField.setText(productDescription);
        descriptionTextField.setEnabled(false);
        
+       String SupplierNamedisplay = product.getSupplier().getSupplierName();
+       SuppliernNameTF.setText(SupplierNamedisplay);
+       SuppliernNameTF.setEnabled(false);
+       
+       String SupplierAddressDisplay = product.getSupplier().getSupplierAddress();
+       SuppkierAddressTF.setText(SupplierAddressDisplay);
+       SuppkierAddressTF.setEnabled(false);
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField SuppkierAddressTF;
+    private javax.swing.JTextField SuppliernNameTF;
     private javax.swing.JTextField availNumTextField;
-    private javax.swing.JTextField availNumTextField1;
     private javax.swing.JTextField descriptionTextField;
-    private javax.swing.JTextField descriptionTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
