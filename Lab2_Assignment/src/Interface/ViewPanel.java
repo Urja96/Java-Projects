@@ -44,6 +44,8 @@ public class ViewPanel extends javax.swing.JPanel {
         descriptionTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        availNumTextField1 = new javax.swing.JTextField();
+        descriptionTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -57,6 +59,7 @@ public class ViewPanel extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(30, 70, 60, 20);
 
+        nameTextField.setEditable(false);
         nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextFieldActionPerformed(evt);
@@ -69,6 +72,7 @@ public class ViewPanel extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(30, 110, 60, 20);
 
+        priceTextField.setEditable(false);
         priceTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 priceTextFieldActionPerformed(evt);
@@ -81,6 +85,7 @@ public class ViewPanel extends javax.swing.JPanel {
         add(jLabel4);
         jLabel4.setBounds(30, 150, 160, 20);
 
+        availNumTextField.setEditable(false);
         availNumTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 availNumTextFieldActionPerformed(evt);
@@ -93,6 +98,7 @@ public class ViewPanel extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(30, 190, 90, 20);
 
+        descriptionTextField.setEditable(false);
         descriptionTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descriptionTextFieldActionPerformed(evt);
@@ -108,6 +114,24 @@ public class ViewPanel extends javax.swing.JPanel {
         jLabel7.setText("Supplier Address: ");
         add(jLabel7);
         jLabel7.setBounds(30, 270, 130, 20);
+
+        availNumTextField1.setEditable(false);
+        availNumTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availNumTextField1ActionPerformed(evt);
+            }
+        });
+        add(availNumTextField1);
+        availNumTextField1.setBounds(160, 220, 320, 30);
+
+        descriptionTextField1.setEditable(false);
+        descriptionTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descriptionTextField1ActionPerformed(evt);
+            }
+        });
+        add(descriptionTextField1);
+        descriptionTextField1.setBounds(160, 260, 320, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
@@ -125,6 +149,14 @@ public class ViewPanel extends javax.swing.JPanel {
     private void descriptionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_descriptionTextFieldActionPerformed
+
+    private void availNumTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availNumTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_availNumTextField1ActionPerformed
+
+    private void descriptionTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descriptionTextField1ActionPerformed
     private void displayProduct(Product product){
               
        String productName = product.getName();
@@ -147,7 +179,9 @@ public class ViewPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField availNumTextField;
+    private javax.swing.JTextField availNumTextField1;
     private javax.swing.JTextField descriptionTextField;
+    private javax.swing.JTextField descriptionTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

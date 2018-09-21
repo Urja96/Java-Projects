@@ -27,6 +27,8 @@ public class UpdatePanel extends javax.swing.JPanel {
         priceTextField1.setText(product.getPrice());
         availNumTextField1.setText(product.getAvailNum());
         descriptionTextField1.setText(product.getDescription());
+        SupplierName.setText(product.getSupplier().getSupplierName());
+        SupplierAddress.setText(product.getSupplier().getSupplierAddress());
         
     }
     /**
@@ -49,6 +51,10 @@ public class UpdatePanel extends javax.swing.JPanel {
         descriptionTextField1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        SupplierName = new javax.swing.JTextField();
+        SupplierAddress = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -80,7 +86,7 @@ public class UpdatePanel extends javax.swing.JPanel {
             }
         });
         add(Updatebutton);
-        Updatebutton.setBounds(220, 330, 80, 23);
+        Updatebutton.setBounds(220, 380, 80, 23);
         add(priceTextField1);
         priceTextField1.setBounds(150, 110, 230, 30);
         add(availNumTextField1);
@@ -92,7 +98,19 @@ public class UpdatePanel extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(20, 193, 90, 20);
         add(jSeparator2);
-        jSeparator2.setBounds(0, 300, 560, 10);
+        jSeparator2.setBounds(0, 350, 560, 10);
+
+        jLabel9.setText("Supplier Name:");
+        add(jLabel9);
+        jLabel9.setBounds(20, 240, 130, 20);
+        add(SupplierName);
+        SupplierName.setBounds(150, 230, 230, 30);
+        add(SupplierAddress);
+        SupplierAddress.setBounds(150, 270, 230, 30);
+
+        jLabel10.setText("Supplier Address:");
+        add(jLabel10);
+        jLabel10.setBounds(20, 280, 90, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebuttonActionPerformed
@@ -102,20 +120,31 @@ public class UpdatePanel extends javax.swing.JPanel {
         product.setAvailNum(availNumTextField1.getText());
         product.setDescription(descriptionTextField1.getText());
         
+        String SuplierName = product.getSupplier().getSupplierName();
+        SupplierName.setText(SuplierName);
+        
+        String SuplierAddress = product.getSupplier().getSupplierAddress();
+        SupplierAddress.setText(SuplierAddress);
+        
+        
         //promt a dialog box for successful submit
         JOptionPane.showMessageDialog(null, "Updated Successfully");
     }//GEN-LAST:event_UpdatebuttonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField SupplierAddress;
+    private javax.swing.JTextField SupplierName;
     private javax.swing.JButton Updatebutton;
     private javax.swing.JTextField availNumTextField1;
     private javax.swing.JTextField descriptionTextField1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField nameTextFieldupdate;
     private javax.swing.JTextField priceTextField1;

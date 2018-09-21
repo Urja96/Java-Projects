@@ -10,28 +10,28 @@ package Business;
  * @author hp
  */
 public class Supplier {
-    private String SupplierName;
-    private String SupplierAddress;
+    private String SupplierNameobj;
+    private String SupplierAddressobj;
 
     public String getSupplierName() {
-        return SupplierName;
+        return SupplierNameobj;
     }
 
     public void setSupplierName(String SupplierName) {
-        this.SupplierName = SupplierName;
+        this.SupplierNameobj = SupplierName;
     }
 
     public String getSupplierAddress() {
-        return SupplierAddress;
+        return SupplierAddressobj;
     }
 
     public void setSupplierAddress(String SupplierAddress) {
-        this.SupplierAddress = SupplierAddress;
+        this.SupplierAddressobj = SupplierAddress;
     }
     
     public Supplier(){
-        SupplierName = "URJA JAIN";
-        SupplierAddress = "Boston Massachusetts" ;       
+        SupplierNameobj = "URJA JAIN";
+        SupplierAddressobj = "Boston Massachusetts" ;       
         
     }
     
