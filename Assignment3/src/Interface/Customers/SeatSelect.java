@@ -5,7 +5,9 @@
  */
 package Interface.Customers;
 
+import business.Airline;
 import business.Customer;
+import business.Flight;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -14,7 +16,6 @@ import javax.swing.JPanel;
  *
  * @author hp
  */
-
 public class SeatSelect extends javax.swing.JPanel {
 
     /**
@@ -22,10 +23,21 @@ public class SeatSelect extends javax.swing.JPanel {
      */
     JPanel DisplayPanel;
     Customer customer;
-    public SeatSelect(JPanel DisplayPanel, Customer customer) {
+    Flight flight;
+    Airline airline;
+
+    public SeatSelect(JPanel DisplayPanel, Customer customer, Flight flight) {
         initComponents();
         this.DisplayPanel = DisplayPanel;
+        this.flight = flight;
+        customer = new Customer();
         this.customer = customer;
+        
+        textfieldseat.setText(String.valueOf(flight.getSeats()));
+       //nameLable.setText(airline.getFlightName());
+        fnameLable.setText(flight.getFilghtName());
+        fromLable.setText(flight.getFromDest());
+        tolable.setText(flight.getToDest());
     }
 
     /**
@@ -46,14 +58,14 @@ public class SeatSelect extends javax.swing.JPanel {
         textfieldPNum = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        fnameLable = new javax.swing.JLabel();
+        tolable = new javax.swing.JLabel();
+        fromLable = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        textfieldseat = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 6));
@@ -89,7 +101,7 @@ public class SeatSelect extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(210, 330, 150, 30);
+        jButton1.setBounds(270, 360, 150, 30);
 
         jButton2.setText("<< Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,76 +110,79 @@ public class SeatSelect extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(30, 330, 90, 23);
-
-        jLabel5.setText("Airline Name:");
-        add(jLabel5);
-        jLabel5.setBounds(40, 210, 110, 30);
+        jButton2.setBounds(80, 370, 90, 23);
 
         jLabel6.setText("Flight Name:");
         add(jLabel6);
-        jLabel6.setBounds(40, 250, 90, 20);
+        jLabel6.setBounds(30, 280, 90, 20);
 
         jLabel7.setText("To:");
         add(jLabel7);
-        jLabel7.setBounds(330, 290, 70, 20);
+        jLabel7.setBounds(320, 320, 40, 20);
 
         jLabel8.setText("From:");
         add(jLabel8);
-        jLabel8.setBounds(40, 290, 70, 20);
+        jLabel8.setBounds(30, 320, 70, 20);
+        add(fnameLable);
+        fnameLable.setBounds(190, 280, 200, 20);
+        add(tolable);
+        tolable.setBounds(370, 320, 110, 20);
+        add(fromLable);
+        fromLable.setBounds(190, 320, 110, 20);
 
-        jLabel9.setText("jLabel9");
-        add(jLabel9);
-        jLabel9.setBounds(200, 250, 200, 20);
+        jLabel13.setText("Seat:");
+        add(jLabel13);
+        jLabel13.setBounds(30, 210, 70, 20);
 
-        jLabel10.setText("jLabel9");
-        add(jLabel10);
-        jLabel10.setBounds(380, 290, 110, 20);
-
-        jLabel11.setText("jLabel9");
-        add(jLabel11);
-        jLabel11.setBounds(200, 220, 200, 20);
-
-        jLabel12.setText("jLabel9");
-        add(jLabel12);
-        jLabel12.setBounds(200, 290, 110, 20);
+        textfieldseat.setEditable(false);
+        add(textfieldseat);
+        textfieldseat.setBounds(200, 200, 180, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         Customer cstm = customer.getCustomerDirectory().addCustomer();
-           cstm.setFname(textFieldFname.getText());
-           cstm.setLname(textfieldLname.getText());
-           cstm.setPassportNumber(textfieldPNum.getText());
-                   //fly.setTime(textfiledTime.getText());
-           JOptionPane.showMessageDialog(null, "Flight successfully Booked", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        if (flight.getSeats() > 0) {
+            
+            Customer cstm = customer.getCustomerDirectory().addCustomer();
+            cstm.setFname(textFieldFname.getText());
+            cstm.setLname(textfieldLname.getText());
+            cstm.setPassportNumber(textfieldPNum.getText());
+            //fly.setTime(textfiledTime.getText());
+            flight.seatdecrease();
+            JOptionPane.showMessageDialog(null, "Flight successfully Booked", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Sorry no seats Available \n try back later", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         DisplayPanel.remove(this);
-        CardLayout layout = (CardLayout)DisplayPanel.getLayout();
+        CardLayout layout = (CardLayout) DisplayPanel.getLayout();
         layout.previous(DisplayPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fnameLable;
+    private javax.swing.JLabel fromLable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField textFieldFname;
     private javax.swing.JTextField textfieldLname;
     private javax.swing.JTextField textfieldPNum;
+    private javax.swing.JTextField textfieldseat;
+    private javax.swing.JLabel tolable;
     // End of variables declaration//GEN-END:variables
 }

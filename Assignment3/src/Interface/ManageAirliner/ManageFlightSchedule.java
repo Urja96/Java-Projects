@@ -82,13 +82,13 @@ public void refreshTable() {
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Flight Name", "From", "To", "Time", "Seats"
+                "Flight Name", "From", "To", "Time"
             }
         ));
         jScrollPane1.setViewportView(Table);

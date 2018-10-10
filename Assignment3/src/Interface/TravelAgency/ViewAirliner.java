@@ -50,8 +50,8 @@ public class ViewAirliner extends javax.swing.JPanel {
             row[1] = f.getFromDest();
             row[2] = f.getToDest();
             row[3] = f.getTime();
-            row[4] = f.getSeats();
-            model.addRow(row);
+            
+           model.addRow(row);
         }
     }
 
@@ -75,14 +75,14 @@ public class ViewAirliner extends javax.swing.JPanel {
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "FlightNumber", "from", "To", "time", "Seats available"
+                "FlightNumber", "from", "To", "time"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true
+                false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

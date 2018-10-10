@@ -21,6 +21,7 @@ public class Flight {
 
    public void seatdecrease(){
    seats--;
+   
    }
     public int getSeats() {
         return seats;

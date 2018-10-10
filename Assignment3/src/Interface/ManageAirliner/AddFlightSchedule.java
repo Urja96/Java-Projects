@@ -51,8 +51,6 @@ public class AddFlightSchedule extends javax.swing.JPanel {
         textfiledTime = new javax.swing.JTextField();
         backbtn = new javax.swing.JButton();
         addFlightbtn = new javax.swing.JButton();
-        textFieldSeats = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 6));
@@ -99,10 +97,6 @@ public class AddFlightSchedule extends javax.swing.JPanel {
             }
         });
         add(addFlightbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 110, -1));
-        add(textFieldSeats, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 120, -1));
-
-        jLabel3.setText("Number of seats:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 224, 110, 20));
     }// </editor-fold>//GEN-END:initComponents
 private void backAction() {
         DisplayPanel.remove(this);
@@ -120,7 +114,7 @@ private void backAction() {
 
     private void addFlightbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFlightbtnActionPerformed
         // TODO add your handling code here:
-        if (textfieldFlightname.getText().isEmpty() || textfieldFrom.getText().isEmpty() ||textfieldTo.getText().isEmpty() || textfiledTime.getText().isEmpty() || textFieldSeats.getText().isEmpty()){
+        if (textfieldFlightname.getText().isEmpty() || textfieldFrom.getText().isEmpty() ||textfieldTo.getText().isEmpty() || textfiledTime.getText().isEmpty() ){
             JOptionPane.showMessageDialog(null,"Fields can't be empty");
         }
         else {
@@ -128,7 +122,7 @@ private void backAction() {
            fly.setFilghtName(textfieldFlightname.getText());
            fly.setFromDest(textfieldFrom.getText());
            fly.setToDest(textfieldTo.getText());
-           fly.setSeats(Integer.parseInt(textFieldSeats.getText()));             
+           //fly.setSeats(Integer.parseInt(textFieldSeats.getText()));             
          
            fly.setTime(textfiledTime.getText());
            JOptionPane.showMessageDialog(null, "Flight successfully added", "Warning", JOptionPane.INFORMATION_MESSAGE);
@@ -136,7 +130,7 @@ private void backAction() {
            textfieldFrom.setText(" ");
            textfieldTo.setText(" ");
            textfiledTime.setText(" ");
-           textFieldSeats.setText(" ");
+           //textFieldSeats.setText(" ");
         }
     }//GEN-LAST:event_addFlightbtnActionPerformed
 
@@ -150,11 +144,9 @@ private void backAction() {
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField textFieldSeats;
     private javax.swing.JTextField textfieldFlightname;
     private javax.swing.JTextField textfieldFrom;
     private javax.swing.JTextField textfieldTo;

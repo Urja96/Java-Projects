@@ -186,7 +186,8 @@ public class ViewPanel extends javax.swing.JPanel {
             txtAvailablity.setEditable(true);
             txtPrice.setEditable(true);
             txtProdName.setEditable(true);
-            txtDesc.setEnabled(true);
+          txtDesc.setEnabled(true);
+            // txtDesc.setEnabled(true);
             btnSave.setEnabled(true);
             btnUpdate.setEnabled(false);  
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -227,7 +228,7 @@ public class ViewPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         rightPanel.remove(this);
         CardLayout cardlayout = (CardLayout)rightPanel.getLayout();
-       cardlayout.previous(rightPanel);
+        cardlayout.previous(rightPanel);
         Component[] components = rightPanel.getComponents();
        for(Component c: components){
             if (c instanceof ManageProdPanel){

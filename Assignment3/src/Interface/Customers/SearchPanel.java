@@ -26,42 +26,44 @@ public class SearchPanel extends javax.swing.JPanel {
      * Creates new form SearchPanel
      */
     JPanel DisplayPanel;
-   
+
     FlightDirectory flightdirectory;
     Customer customer;
     Airline airline;
     AirlineDirectory airlineDirectory;
+
     public SearchPanel(JPanel DisplayPanel, AirlineDirectory airlineDirectory) {
         initComponents();
-        this.DisplayPanel= DisplayPanel;
+        this.DisplayPanel = DisplayPanel;
         this.airlineDirectory = airlineDirectory;
         //flightdirectory = new FlightDirectory();
-      
+
     }
-public void populate(){
-    DefaultTableModel dtm = (DefaultTableModel)Table.getModel();
-      dtm.setRowCount(0);
-       String from = textfieldfrom.getText();
-       String to = textfiledto.getText();
-       for(Airline airline : airlineDirectory.getAirlineDir()){
-         for(Flight f : airline.getFlightDirectory().getFlightDir()){
-           //f.getFlightdirect().searchFlight(from, to);
-            if(textfieldfrom.getText().equals(f.getFromDest())&& textfiledto.getText().equals(f.getToDest())){
-                Object row[] = new Object[5];
-                row[0]= f;
-                row[1]= f.getFilghtName();
-                row[2]= f.getFromDest();
-                row[3] = f.getToDest();
-                row[4] = f.getTime();
-                dtm.addRow(row);
-                //return;
-            }else{
-                JOptionPane.showMessageDialog(null, "Sorry, No flights available");
+
+    public void populate() {
+        DefaultTableModel dtm = (DefaultTableModel) Table.getModel();
+        dtm.setRowCount(0);
+        String from = textfieldfrom.getText();
+        String to = textfiledto.getText();
+        for (Airline airline : airlineDirectory.getAirlineDir()) {
+            for (Flight f : airline.getFlightDirectory().getFlightDir()) {
+                //f.getFlightdirect().searchFlight(from, to);
+                if (textfieldfrom.getText().equals(f.getFromDest()) && textfiledto.getText().equals(f.getToDest())) {
+                    Object row[] = new Object[5];
+                    row[0] = f;
+                    row[1] = f.getFromDest();
+                    row[2] = f.getToDest();
+                    row[3] = f.getTime();
+                    dtm.addRow(row);
+                    //return;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Sorry, No flights available");
+                }
             }
-       }
-           
+
+        }
     }
-}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,10 +79,10 @@ public void populate(){
         textfieldfrom = new javax.swing.JTextField();
         textfiledto = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Table = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         Backbtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Table = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 6));
@@ -99,16 +101,6 @@ public void populate(){
             }
         });
 
-        Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Airliner Name", "Flight Name", "From", "To", "Time"
-            }
-        ));
-        jScrollPane1.setViewportView(Table);
-
         jButton2.setText("Book ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,12 +115,44 @@ public void populate(){
             }
         });
 
+        Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Flight Name", "From", "To", "Time"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(Table);
+        if (Table.getColumnModel().getColumnCount() > 0) {
+            Table.getColumnModel().getColumn(0).setResizable(false);
+            Table.getColumnModel().getColumn(1).setResizable(false);
+            Table.getColumnModel().getColumn(2).setResizable(false);
+            Table.getColumnModel().getColumn(3).setResizable(false);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(Backbtn)
+                        .addGap(309, 309, 309)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -146,15 +170,9 @@ public void populate(){
                         .addGap(164, 164, 164)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Backbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(11, 11, 11))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,40 +194,40 @@ public void populate(){
                 .addGap(26, 26, 26)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(Backbtn))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
         // TODO add your handling code here:
-         DisplayPanel.remove(this);
-        CardLayout layout = (CardLayout)DisplayPanel.getLayout();
+        DisplayPanel.remove(this);
+        CardLayout layout = (CardLayout) DisplayPanel.getLayout();
         layout.previous(DisplayPanel);
     }//GEN-LAST:event_BackbtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      // Flight flight;
-     populate();
+        // Flight flight;
+        populate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int row = Table.getSelectedRow();
-        if(row<0) {
-             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Flight fligh = (Flight)Table.getValueAt(row, 0);
-        SeatSelect ss = new SeatSelect(DisplayPanel, customer);
+        Flight fligh = (Flight) Table.getValueAt(row, 0);
+        SeatSelect ss = new SeatSelect(DisplayPanel, customer, fligh);
         DisplayPanel.add("Seat", ss);
-        CardLayout layout = (CardLayout)DisplayPanel.getLayout();
-        layout.next(DisplayPanel);        
+        CardLayout layout = (CardLayout) DisplayPanel.getLayout();
+        layout.next(DisplayPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -221,7 +239,7 @@ public void populate(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField textfieldfrom;
     private javax.swing.JTextField textfiledto;
     // End of variables declaration//GEN-END:variables
